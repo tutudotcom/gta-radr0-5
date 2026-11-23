@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d1a">
+  <meta name="description" content="GTA VI Radar: notícias, rumores, versão de PC, vazamentos reportados e progresso da recompilação acompanhados automaticamente.">
+  <meta property="og:title" content="LEONIDA / GTA VI RADAR">
+  <meta property="og:description" content="O centro de inteligência do GTA VI. Notícias, PC, vazamentos e projetos de recompilação.">
+  <title>LEONIDA — GTA VI RADAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="fallback.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="ticker" aria-label="Informações sobre o monitoramento">
+    <div class="container ticker-inner">
+      <span class="ticker-light"></span>
+      <span>GTA VI INTELLIGENCE NETWORK</span>
+      <span class="ticker-sep">/</span>
+      <span>COBERTURA EM PORTUGUÊS</span>
+      <span class="ticker-spacer"></span>
+      <span id="clock">--:--:--</span>
+      <span class="ticker-sep">BRT</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Leonida Radar, início">
+        <span class="brand-icon"><span>VI</span></span>
+        <span class="brand-text">LEONIDA <small>RADAR / GTA VI</small></span>
+      </a>
+      <nav class="navlinks" aria-label="Navegação">
+        <a class="active" href="#noticias">NOTÍCIAS</a>
+        <a href="#projetos">RECOMPILAÇÃO</a>
+        <a href="#status">STATUS PC</a>
+      </nav>
+      <div class="header-actions">
+        <span class="sync-label" id="sync-label"><i class="pulse-dot"></i> CARREGANDO</span>
+        <button class="icon-btn" id="refresh-btn" type="button" title="Verificar atualizações" aria-label="Verificar atualizações">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M5.7 9a7 7 0 0 1 12.3-2L20 12M4 12l2 5a7 7 0 0 0 12.3-2"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio" class="container">
+    <section class="hero" aria-label="GTA VI Radar">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-sun" aria-hidden="true"></div>
+      <div class="hero-buildings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hero-palm palm-a" aria-hidden="true">✳</div><div class="hero-palm palm-b" aria-hidden="true">✳</div>
+      <div class="hero-content">
+        <div class="eyebrow"><span class="tiny-star">✳</span> O QUE ESTÁ ACONTECENDO EM LEONIDA?</div>
+        <h1><span class="hero-first">TUDO SOBRE</span><span class="hero-game">GTA <em>VI.</em></span></h1>
+        <p>O radar de notícias que não dorme. Acompanhe a versão de PC, vazamentos <strong>reportados</strong>, projetos de recompilação e anúncios oficiais.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#noticias">EXPLORAR NOTÍCIAS <span>↗</span></a>
+          <a class="btn-secondary" href="#projetos">VER PROJETOS <span>↗</span></a>
+        </div>
+      </div>
+      <div class="hero-stamp" aria-hidden="true"><span>LEONIDA</span><strong>VI</strong><small>MONITOR 001</small></div>
+      <div class="hero-footer"><span>EST. 2026</span><span>NEWS / PC / RECOMP / LEAKS</span><span>SCROLL PARA EXPLORAR ↓</span></div>
+    </section>
+
+    <section id="status" class="status-section" aria-labelledby="status-heading">
+      <div class="section-head compact-head"><div><span class="overline">01 / INTELIGÊNCIA</span><h2 id="status-heading">SITUAÇÃO ATUAL <span class="head-accent">↗</span></h2></div><span class="section-note">ATUALIZAÇÕES AUTOMÁTICAS <i class="little-signal"></i></span></div>
+      <div class="status-cards">
+        <article class="status-card"><div class="status-top"><span>LANÇAMENTO CONSOLES</span><i class="status-icon">01</i></div><strong class="status-value">19 NOV <span>2026</span></strong><div class="status-bottom"><span class="pill confirmed">● CONFIRMADO</span><small>PS5 / XBOX SERIES</small></div></article>
+        <article class="status-card"><div class="status-top"><span>VERSÃO NATIVA PARA PC</span><i class="status-icon">02</i></div><strong class="status-value status-text">SEM DATA</strong><div class="status-bottom"><span class="pill pending">○ NÃO ANUNCIADA</span><small>ROCKSTAR GAMES</small></div></article>
+        <article class="status-card"><div class="status-top"><span>PROJETOS MONITORADOS</span><i class="status-icon">03</i></div><strong class="status-value" id="repo-count">02 <span>REPOS</span></strong><div class="status-bottom"><span class="pill open-source">◆ GITHUB</span><small>COMMITS E PROGRESSO</small></div></article>
+        <article class="status-card"><div class="status-top"><span>ÚLTIMA COLETA DE DADOS</span><i class="status-icon">04</i></div><strong class="status-value status-text" id="last-scan-value">AGUARDANDO</strong><div class="status-bottom"><span class="pill neutral" id="data-status">DADOS INICIAIS</span><small id="scan-detail">PUBLICAÇÃO NECESSÁRIA</small></div></article>
+      </div>
+      <p class="status-disclaimer"><b>LEGENDA:</b> "Confirmado" só é usado para anúncios diretos da Rockstar. Reportagens, alegações sobre vazamentos e commits de código <strong>não comprovam</strong> que GTA VI rode no PC. <a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener noreferrer">Fonte oficial ↗</a></p>
+    </section>
+
+    <section id="noticias" class="news-section" aria-labelledby="news-heading">
+      <div class="section-head"><div><span class="overline">02 / COBERTURA CONTÍNUA</span><h2 id="news-heading">CENTRAL DE <span>NOTÍCIAS.</span></h2><p>As últimas manchetes do universo GTA VI, organizadas por tema.</p></div><div class="news-counter"><strong id="news-total">—</strong><span>NOTÍCIAS<br>NO RADAR</span></div></div>
+      <div class="toolbar">
+        <div class="tabs" role="group" aria-label="Filtrar categoria">
+          <button class="tab active" data-category="all" aria-pressed="true">TODAS <span id="count-all"></span></button>
+          <button class="tab" data-category="official" aria-pressed="false">OFICIAL</button>
+          <button class="tab" data-category="pc" aria-pressed="false">PC / PORT</button>
+          <button class="tab" data-category="leaks" aria-pressed="false">VAZAMENTOS</button>
+          <button class="tab" data-category="recomp" aria-pressed="false">RECOMPILAÇÃO</button>
+          <button class="tab" data-category="general" aria-pressed="false">GERAL</button>
+        </div>
+        <div class="toolbar-bottom">
+          <label class="search"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><input id="search-input" type="search" placeholder="Buscar por palavra-chave..." aria-label="Buscar notícias"></label>
+          <label class="sort-label">ORDENAR: <select id="sort-select" aria-label="Ordenar notícias"><option value="recent">MAIS RECENTES</option><option value="oldest">MAIS ANTIGAS</option><option value="source">POR FONTE</option></select></label>
+          <button class="saved-toggle" id="saved-toggle" type="button" aria-pressed="false">☆ SALVOS <span id="saved-count">0</span></button>
+        </div>
+      </div>
+      <div id="news-grid" class="news-grid" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state" hidden><span>⌕</span><strong>RADAR SEM RESULTADOS</strong><p>Tente outra palavra ou escolha uma categoria diferente.</p><button type="button" id="clear-filters">LIMPAR FILTROS ↗</button></div>
+      <div class="news-foot"><span id="visible-counter">—</span><button id="more-btn" class="btn-more" type="button">CARREGAR MAIS <span>↓</span></button></div>
+    </section>
+
+    <section id="projetos" class="projects-section" aria-labelledby="projects-heading">
+      <div class="section-head"><div><span class="overline">03 / CÓDIGO ABERTO</span><h2 id="projects-heading">LABORATÓRIO DE <span>RECOMPILAÇÃO.</span></h2><p>Projetos públicos monitorados diretamente pela API do GitHub.</p></div><a class="text-link" href="https://github.com/topics/gta-vi" target="_blank" rel="noopener noreferrer">EXPLORAR GITHUB ↗</a></div>
+      <div class="project-grid" id="project-grid"></div>
+      <p class="project-disclaimer"><span>!</span> Repositório ativo ≠ jogo funcional. O monitor registra commits, estrelas e atualizações públicas, mas não confirma desempenho ou inicialização do GTA VI.</p>
+    </section>
+
+    <section class="bottom-grid">
+      <div class="intel-panel"><span class="overline">04 / FATO OU RUMOR?</span><h2>ANTES DE<br><span>ACREDITAR.</span></h2><p>Nem toda manchete é uma confirmação. Nosso radar distingue a origem da informação:</p><div class="legend-row"><span class="legend-symbol official-symbol">✓</span><div><strong>FONTE OFICIAL</strong><small>Comunicados publicados diretamente pela Rockstar.</small></div></div><div class="legend-row"><span class="legend-symbol press-symbol">↗</span><div><strong>REPORTAGEM / ANÁLISE</strong><small>Informações de veículos de imprensa. Podem conter hipóteses.</small></div></div><div class="legend-row"><span class="legend-symbol rumor-symbol">?</span><div><strong>ALEGAÇÃO NÃO VERIFICADA</strong><small>Vazamentos e especulações — sem tratar afirmações como fatos.</small></div></div></div>
+      <div class="updates-panel"><div class="updates-panel-inner"><span class="overline">05 / SISTEMA DE MONITORAMENTO</span><h2>RADAR<br><span>SEMPRE LIGADO.</span></h2><p>A coleta de notícias pode rodar a cada 30 minutos no GitHub Actions. Com o site aberto, a página verifica novos dados a cada 2 minutos.</p><div class="update-meta"><div><span>COLETA NO SERVIDOR</span><strong>30 MIN*</strong></div><div><span>ATUALIZAÇÃO DA TELA</span><strong>2 MIN</strong></div></div><button class="notify-btn" id="notify-btn" type="button">ATIVAR ALERTAS NO NAVEGADOR <span>↗</span></button><small class="updates-note">*Agendamentos do GitHub podem atrasar. Alertas funcionam com a página aberta e permissão do navegador.</small></div></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><div class="footer-brand">LEONIDA <span>/ GTA VI RADAR</span></div><p>Projeto independente de monitoramento de notícias. Não afiliado à Rockstar Games ou à Take-Two Interactive. Não distribui arquivos vazados.</p><div class="footer-links"><a href="https://www.rockstargames.com/VI" target="_blank" rel="noopener noreferrer">ROCKSTAR ↗</a><a href="https://github.com/ItsNotRexed/Leonida" target="_blank" rel="noopener noreferrer">LEONIDA ↗</a><a href="#inicio">VOLTAR ↑</a></div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
