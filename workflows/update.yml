@@ -1,0 +1,66 @@
+name: Atualizar o GTA VI Radar
+
+on:
+  schedule:
+    # Às 00:07 e 00:37, etc., em UTC. Agendamento não é garantido no minuto exato.
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'scripts/**'
+      - '.github/workflows/update.yml'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: gta6-radar-site
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Coletar notícias, releases e commits
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/update.py
+
+      - name: Salvar feed atualizado
+        run: |
+          git config user.name "gta6-radar-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/feed.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: atualiza GTA VI Radar"
+            git push
+          fi
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar páginas estáticas
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './site'
+
+      - name: Publicar automaticamente
+        id: deployment
+        uses: actions/deploy-pages@v4
